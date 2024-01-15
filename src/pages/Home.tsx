@@ -13,9 +13,9 @@ const Home = () => {
       <main>
         <p>Select a gamemode to get started</p>
         <section className="game-modes">
-          <Link to="/classic">Classic</Link>
-          <Link to="/quote">Quote</Link>
-          <Link to="/more">More Yet to Come</Link>
+          <Link to="/classic">Classic 💪</Link>
+          <Link to="/quote">Quote 💬</Link>
+          <Link to="/">More under construction 🏗️</Link>
         </section>
       </main>
       <footer>
@@ -31,7 +31,7 @@ const Home = () => {
           <a href="https://www.wp.pl/">Info</a>
         </div>
         <p>Kamil Szczukowski, 186714</p>
-        <p>
+        <p className="inspired">
           Inspired by{" "}
           <a
             href="https://loldle.net/"

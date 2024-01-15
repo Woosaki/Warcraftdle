@@ -6,6 +6,8 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: center top;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 #root {
@@ -52,11 +54,12 @@ p {
   font-size: 2rem;
   margin: 10px;
   padding: 15px;
-  width: 400px;
+  width: clamp(400px, 50%, 600px);
   border-radius: 7px;
-  color: #fdfdfd;
+  border: 2px solid #905936;
+  color: #f3eae8;
   text-decoration: none;
-  background-color: #4caf50;
+  background-color: #ffd365;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s ease-in-out;
 }
@@ -69,10 +72,15 @@ footer {
   display: grid;
   margin: auto;
   max-width: 400px;
-  margin-bottom: 30px;
 }
 
 .useful-links {
   display: flex;
   justify-content: space-evenly;
+}
+
+.inspired {
+  font-size: 1rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
 }
