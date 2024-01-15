@@ -1,47 +1,5 @@
-body {
-  margin: 0;
-  font-synthesis: none;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-image: url("../images/backgroundImage.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center top;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-header {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 50px;
-}
-
-.logo {
-  width: 400px;
-  height: auto;
-  transition: transform 0.3s ease-in-out;
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
 main {
   flex: 1;
-}
-
-p {
-  font-size: 1.5rem;
-  margin-bottom: 0;
-  color: #fdfdfd;
-  text-align: center;
 }
 
 .game-modes {
@@ -66,21 +24,4 @@ p {
 
 .game-modes a:hover {
   transform: scale(1.05);
-}
-
-footer {
-  display: grid;
-  margin: auto;
-  max-width: 400px;
-}
-
-.useful-links {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.inspired {
-  font-size: 1rem;
-  margin-top: 30px;
-  margin-bottom: 15px;
 }

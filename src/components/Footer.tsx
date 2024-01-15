@@ -1,3 +1,4 @@
+import "../assets/styles/Footer.css";
 import githubSVG from "../assets/images/github.svg";
 import coffeeSVG from "../assets/images/coffee.svg";
 import infoSVG from "../assets/images/info.svg";

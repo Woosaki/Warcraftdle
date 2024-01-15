@@ -1,0 +1,24 @@
+footer {
+  display: grid;
+  margin: auto;
+  min-width: 400px;
+}
+
+.useful-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.useful-links img {
+  width: 64px;
+  height: auto;
+  background-color: black;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.inspired {
+  font-size: 1rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
