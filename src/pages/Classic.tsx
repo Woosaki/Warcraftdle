@@ -6,6 +6,7 @@ import Tutorial from "../components/Tutorial";
 import { Character } from "../types/Character";
 import InputField from "../components/InputField";
 import CharacterProperties from "../components/CharacterProperties";
+import PropertyNames from "../components/PropertyNames";
 
 const Classic = () => {
   const [input, setInput] = useState("");
@@ -63,29 +64,7 @@ const Classic = () => {
         {selectedCharacters.length > 0 && (
           <>
             <section className="classic-answers">
-              <div className="property-names">
-                <div className="property-name text-shadow">
-                  Name <hr />
-                </div>
-                <div className="property-name text-shadow">
-                  Gender <hr />
-                </div>
-                <div className="property-name text-shadow">
-                  Race <hr />
-                </div>
-                <div className="property-name text-shadow">
-                  Class <hr />
-                </div>
-                <div className="property-name text-shadow">
-                  Expansion(s) <hr />
-                </div>
-                <div className="property-name text-shadow">
-                  Affiliation(s) <hr />
-                </div>
-                <div className="property-name text-shadow">
-                  Zone(s) <hr />
-                </div>
-              </div>
+              <PropertyNames />
               {selectedCharacters.map((character, index) => (
                 <CharacterProperties
                   key={character.id}
