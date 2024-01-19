@@ -9,13 +9,13 @@ const Footer = () => (
   <footer>
     <div className="useful-links">
       <ColoredImage
-        href="https://github.com/Woosaki"
+        href="https://github.com/Woosaki/Warcraftdle"
         src={githubSVG}
         alt="Github Image"
         backgroundColor="#000"
       />
       <ColoredImage
-        href="https://ko-fi.com/wowdlegame"
+        href="https://ko-fi.com/woosaki"
         src={coffeeSVG}
         alt="Coffee Image"
         backgroundColor="#ace4aa"
