@@ -17,7 +17,17 @@ type Character = {
 
 const Classic = () => {
   const [input, setInput] = useState("");
-  const [characters, setCharacters] = useState<Character[]>([]);
+  const [unselectedCharacters, setUnselectedCharacters] = useState<Character[]>(
+    []
+  );
+  const [selectedCharacters, setSelectedCharacters] = useState<Character[]>([]);
+  const [characterToGuess, setCharacterToGuess] = useState<Character>();
+
+  useEffect(() => {
+    fetch(`https://api.warcraftdle.dsprojects.pl/wowcharacter/random`)
+      .then((response) => response.json())
+      .then((data: Character) => setCharacterToGuess(data));
+  }, []);
 
   useEffect(() => {
     if (input) {
@@ -25,11 +35,41 @@ const Classic = () => {
         `https://api.warcraftdle.dsprojects.pl/wowcharacter?startswith=${input}`
       )
         .then((response) => response.json())
-        .then((data: Character[]) => setCharacters(data));
+        .then((data: Character[]) => {
+          const unselected = data.filter(
+            (character) =>
+              !selectedCharacters.find(
+                (selected) => selected.id === character.id
+              )
+          );
+          setUnselectedCharacters(unselected);
+        });
     } else {
-      setCharacters([]);
+      setUnselectedCharacters([]);
     }
-  }, [input]);
+  }, [input, selectedCharacters]);
+
+  const renderCharacterProperties = (character: Character, index: number) => {
+    const excludedProperties = ["id", "photo"];
+    const characterProperties = Object.entries(character).filter(
+      ([key]) => !excludedProperties.includes(key)
+    );
+    return (
+      <div key={index} className="character-properties">
+        {characterProperties.map(([key, value]) => (
+          <div key={key} className="property">
+            {Array.isArray(value)
+              ? value.map((item, index) => (
+                  <div key={index} className="property">
+                    {item}
+                  </div>
+                ))
+              : value}
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <>
@@ -45,7 +85,13 @@ const Classic = () => {
             placeholder="Type character name ..."
           />
           <button
-            onClick={() => console.log(characters[0])}
+            onClick={() => {
+              setInput("");
+              setSelectedCharacters([
+                unselectedCharacters[0],
+                ...selectedCharacters,
+              ]);
+            }}
             className="submit-button"
           >
             Submit
@@ -54,20 +100,53 @@ const Classic = () => {
         {input && (
           <div className="characters-list">
             <div style={{ height: "8px" }}></div>
-            {characters.length === 0 && (
+            {unselectedCharacters.length > 0 &&
+              unselectedCharacters.map((character) => (
+                <div
+                  key={character.id}
+                  className="character"
+                  onClick={() => {
+                    setInput("");
+                    setSelectedCharacters([character, ...selectedCharacters]);
+                  }}
+                >
+                  {character.name}
+                </div>
+              ))}
+            {unselectedCharacters.length === 0 && (
               <div className="no-character-found">No character found.</div>
             )}
-            {characters.length > 0 &&
-              characters.map((character) => {
-                return (
-                  <div key={character.id} className="character">
-                    {character.name}
-                  </div>
-                );
-              })}
             <div style={{ height: "8px" }}></div>
           </div>
         )}
+        <section className="classic-answers">
+          <div className="property-names">
+            <div className="property-name text-shadow">
+              Name <hr />
+            </div>
+            <div className="property-name text-shadow">
+              Gender <hr />
+            </div>
+            <div className="property-name text-shadow">
+              Race <hr />
+            </div>
+            <div className="property-name text-shadow">
+              Class <hr />
+            </div>
+            <div className="property-name text-shadow">
+              Expansion(s) <hr />
+            </div>
+            <div className="property-name text-shadow">
+              Affiliation(s) <hr />
+            </div>
+            <div className="property-name text-shadow">
+              Zone(s) <hr />
+            </div>
+          </div>
+          {selectedCharacters.map((character, index) =>
+            renderCharacterProperties(character, index)
+          )}
+        </section>
       </main>
       <Footer />
     </>
