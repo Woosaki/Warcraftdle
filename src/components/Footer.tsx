@@ -27,8 +27,8 @@ const Footer = () => (
         backgroundColor="#fcc41c"
       />
     </div>
-    <p>Kamil Szczukowski, 186714</p>
-    <p className="inspired">
+    <p className="text-shadow">Kamil Szczukowski, 186714</p>
+    <p className="inspired text-shadow">
       Inspired by <ExternalLink href="https://loldle.net/">Loldle</ExternalLink>{" "}
       and{" "}
       <ExternalLink href="https://www.nytimes.com/games/wordle/index.html">
