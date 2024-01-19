@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Tutorial from "../components/Tutorial";
 import { Character } from "../types/Character";
 import InputField from "../components/InputField";
+import CharacterProperties from "../components/CharacterProperties";
 
 const Classic = () => {
   const [input, setInput] = useState("");
@@ -48,60 +49,6 @@ const Classic = () => {
     ]);
   };
 
-  const renderCharacterProperties = (character: Character, index: number) => {
-    const excludedProperties = ["id", "photo"];
-    const characterProperties = Object.entries(character).filter(
-      ([key]) => !excludedProperties.includes(key)
-    );
-
-    return (
-      <div key={index} className="character-properties">
-        {characterProperties.map(([key, value]) => {
-          let propertyClass = "non-matching-property";
-          if (characterToGuess) {
-            if (Array.isArray(value)) {
-              const guessValue = characterToGuess[key as keyof Character] as
-                | string[]
-                | null;
-              const allMatch =
-                value.length === guessValue?.length &&
-                value.every((v, i) => guessValue?.[i] === v);
-              const someMatch = value.some((v) => guessValue?.includes(v));
-              if (allMatch) {
-                propertyClass = "matching-property";
-              } else if (someMatch) {
-                propertyClass = "partially-matching-property";
-              }
-            } else {
-              propertyClass =
-                characterToGuess[key as keyof Character] === value
-                  ? "matching-property"
-                  : "non-matching-property";
-            }
-          }
-
-          return (
-            <div key={key} className={`property ${propertyClass}`}>
-              {Array.isArray(value) ? (
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: value
-                      .map((v, i) => (i < value.length - 1 ? v + ",<br />" : v))
-                      .join(""),
-                  }}
-                />
-              ) : value === null ? (
-                "Null"
-              ) : (
-                value
-              )}
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-
   return (
     <>
       <Header />
@@ -139,9 +86,14 @@ const Classic = () => {
                   Zone(s) <hr />
                 </div>
               </div>
-              {selectedCharacters.map((character, index) =>
-                renderCharacterProperties(character, index)
-              )}
+              {selectedCharacters.map((character, index) => (
+                <CharacterProperties
+                  key={character.id}
+                  character={character}
+                  index={index}
+                  characterToGuess={characterToGuess}
+                />
+              ))}
             </section>
             <Tutorial />
           </>
