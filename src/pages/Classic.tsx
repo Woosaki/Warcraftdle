@@ -3,18 +3,8 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Tutorial from "../components/Tutorial";
-
-type Character = {
-  id: number;
-  name: string;
-  photo: string;
-  gender: string;
-  race: string;
-  class: string | null;
-  expansions: string[];
-  affiliations: string[];
-  zones: string[];
-};
+import { Character } from "../types/Character";
+import CharacterList from "../components/CharacterList";
 
 const Classic = () => {
   const [input, setInput] = useState("");
@@ -130,28 +120,13 @@ const Classic = () => {
           >
             Submit
           </button>
-          {input && (
-            <div className="characters-list">
-              <div style={{ height: "8px" }}></div>
-              {unselectedCharacters.length > 0 &&
-                unselectedCharacters.map((character) => (
-                  <div
-                    key={character.id}
-                    className="character"
-                    onClick={() => {
-                      setInput("");
-                      setSelectedCharacters([character, ...selectedCharacters]);
-                    }}
-                  >
-                    {character.name}
-                  </div>
-                ))}
-              {unselectedCharacters.length === 0 && (
-                <div className="no-character-found">No character found.</div>
-              )}
-              <div style={{ height: "8px" }}></div>
-            </div>
-          )}
+          <CharacterList
+            input={input}
+            setInput={setInput}
+            unselectedCharacters={unselectedCharacters}
+            selectedCharacters={selectedCharacters}
+            setSelectedCharacters={setSelectedCharacters}
+          />
         </div>
         {selectedCharacters.length > 0 && (
           <>
