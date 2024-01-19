@@ -54,17 +54,24 @@ const Classic = () => {
     const characterProperties = Object.entries(character).filter(
       ([key]) => !excludedProperties.includes(key)
     );
+
     return (
       <div key={index} className="character-properties">
         {characterProperties.map(([key, value]) => (
           <div key={key} className="property">
-            {Array.isArray(value)
-              ? value.map((item, index) => (
-                  <div key={index} className="property">
-                    {item}
-                  </div>
-                ))
-              : value}
+            {Array.isArray(value) ? (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: value
+                    .map((v, i) => (i < value.length - 1 ? v + ",<br />" : v))
+                    .join(""),
+                }}
+              />
+            ) : value === null ? (
+              "Null"
+            ) : (
+              value
+            )}
           </div>
         ))}
       </div>
