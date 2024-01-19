@@ -129,29 +129,29 @@ const Classic = () => {
           >
             Submit
           </button>
+          {input && (
+            <div className="characters-list">
+              <div style={{ height: "8px" }}></div>
+              {unselectedCharacters.length > 0 &&
+                unselectedCharacters.map((character) => (
+                  <div
+                    key={character.id}
+                    className="character"
+                    onClick={() => {
+                      setInput("");
+                      setSelectedCharacters([character, ...selectedCharacters]);
+                    }}
+                  >
+                    {character.name}
+                  </div>
+                ))}
+              {unselectedCharacters.length === 0 && (
+                <div className="no-character-found">No character found.</div>
+              )}
+              <div style={{ height: "8px" }}></div>
+            </div>
+          )}
         </div>
-        {input && (
-          <div className="characters-list">
-            <div style={{ height: "8px" }}></div>
-            {unselectedCharacters.length > 0 &&
-              unselectedCharacters.map((character) => (
-                <div
-                  key={character.id}
-                  className="character"
-                  onClick={() => {
-                    setInput("");
-                    setSelectedCharacters([character, ...selectedCharacters]);
-                  }}
-                >
-                  {character.name}
-                </div>
-              ))}
-            {unselectedCharacters.length === 0 && (
-              <div className="no-character-found">No character found.</div>
-            )}
-            <div style={{ height: "8px" }}></div>
-          </div>
-        )}
         <section className="classic-answers">
           <div className="property-names">
             <div className="property-name text-shadow">

@@ -11,6 +11,7 @@
   border: 5px solid #555;
   background-color: #555;
   border-radius: 0.7rem;
+  position: relative;
 }
 
 .input-field {
@@ -48,6 +49,9 @@
   margin-bottom: 1rem;
   background-color: #424242;
   overflow-y: auto;
+  position: absolute;
+  z-index: 1;
+  top: 115%;
 }
 
 .characters-list::-webkit-scrollbar {
@@ -79,7 +83,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: clamp(400px, 50%, 800px);
-  margin: 2rem auto 5rem auto;
+  margin: 3.5rem auto;
   position: relative;
 }
 
