@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Tutorial from "../components/Tutorial";
 import { Character } from "../types/Character";
-import CharacterList from "../components/CharacterList";
+import InputField from "../components/InputField";
 
 const Classic = () => {
   const [input, setInput] = useState("");
@@ -107,28 +107,12 @@ const Classic = () => {
       <Header />
       <main className="classic-game">
         <p className="text-shadow">Guess World of Warcraft character!</p>
-        <div className="input-container">
-          <input
-            className="input-field"
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Type character name ..."
-          />
-          <button
-            onClick={() => handleOnClick(undefined)}
-            className="submit-button"
-            disabled={!input || !unselectedCharacters.length}
-          >
-            Submit
-          </button>
-          {input && (
-            <CharacterList
-              handleOnClick={handleOnClick}
-              unselectedCharacters={unselectedCharacters}
-            />
-          )}
-        </div>
+        <InputField
+          input={input}
+          setInput={setInput}
+          handleOnClick={handleOnClick}
+          unselectedCharacters={unselectedCharacters}
+        />
         {selectedCharacters.length > 0 && (
           <>
             <section className="classic-answers">
