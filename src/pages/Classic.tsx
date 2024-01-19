@@ -1,4 +1,5 @@
 import "../assets/styles/Classic.css";
+import { fetchCharactersStartingWith, fetchRandomCharacter } from "../api/api";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -15,29 +16,31 @@ const Classic = () => {
   const [characterToGuess, setCharacterToGuess] = useState<Character>();
 
   useEffect(() => {
-    fetch(`https://api.warcraftdle.dsprojects.pl/wowcharacter/random`)
-      .then((response) => response.json())
-      .then((data: Character) => setCharacterToGuess(data));
+    const fetchRandomCharacterData = async () => {
+      const character = await fetchRandomCharacter();
+      setCharacterToGuess(character);
+    };
+    fetchRandomCharacterData();
   }, []);
 
   useEffect(() => {
+    const controller = new AbortController();
+    const fetchCharactersStartingWithInput = async () => {
+      const characters = await fetchCharactersStartingWith(
+        input,
+        selectedCharacters,
+        controller.signal
+      );
+      setUnselectedCharacters(characters);
+    };
+
     if (input) {
-      fetch(
-        `https://api.warcraftdle.dsprojects.pl/wowcharacter?startswith=${input}`
-      )
-        .then((response) => response.json())
-        .then((data: Character[]) => {
-          const unselected = data.filter(
-            (character) =>
-              !selectedCharacters.find(
-                (selected) => selected.id === character.id
-              )
-          );
-          setUnselectedCharacters(unselected);
-        });
+      fetchCharactersStartingWithInput();
     } else {
       setUnselectedCharacters([]);
     }
+
+    return () => controller.abort();
   }, [input, selectedCharacters]);
 
   const handleOnClick = (characterToAdd?: Character) => {
