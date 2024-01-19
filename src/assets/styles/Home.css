@@ -14,10 +14,10 @@
   padding: 15px;
   width: clamp(400px, 50%, 600px);
   border-radius: 7px;
-  border: 2px solid #905936;
-  color: #f3eae8;
+  border: 2px solid #76726f;
+  color: #f9f6ee;
   text-decoration: none;
-  background-color: #ffd365;
+  background-color: #424242;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s ease-in-out;
 }
