@@ -8,8 +8,8 @@
   display: flex;
   min-width: 400px;
   margin-bottom: 7px;
-  border: 5px solid #555;
-  background-color: #555;
+  border: 5px solid #181c20;
+  background-color: #181c20;
   border-radius: 0.7rem;
   position: relative;
 }
@@ -19,7 +19,7 @@
   padding: 1rem;
   border-bottom-left-radius: 0.7rem;
   border-top-left-radius: 0.7rem;
-  border: 2px solid #76726f;
+  border: 2px solid #af9767;
   background-color: #424242;
   color: #f9f6ee;
   font-size: 1.3rem;
@@ -30,7 +30,7 @@
   border-bottom-right-radius: 0.7rem;
   border-top-right-radius: 0.7rem;
   border: none;
-  background-color: #76726f;
+  background-color: #af9767;
   color: #f9f6ee;
   font-size: 1.3rem;
   cursor: pointer;
@@ -39,7 +39,6 @@
 .no-character-found {
   display: flex;
   justify-content: center;
-  color: #f9f6ee;
   font-size: 1.3rem;
 }
 
@@ -67,7 +66,6 @@
 }
 
 .character {
-  color: #f9f6ee;
   padding: 1rem;
   font-size: 1.3rem;
   cursor: pointer;
@@ -95,7 +93,6 @@
 .property-name {
   flex: 1;
   margin: 0.1rem;
-  color: #f9f6ee;
   font-size: 1.1rem;
   text-align: center;
 }
@@ -109,7 +106,6 @@
 
 .property {
   flex: 1;
-  color: #f9f6ee;
   border: 1px solid #000;
   border-radius: 5px;
   margin: 0 0.15rem;
@@ -118,6 +114,7 @@
   align-items: center;
   text-align: center;
   font-size: 0.85rem;
+  font-weight: 500;
   position: relative;
 }
 
@@ -137,4 +134,34 @@
 
 .non-matching-property {
   background-image: url("../images/CellBackgroundBad.webp");
+}
+
+.tutorial-colors {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  background-color: #181c20;
+  border: 2px solid #af9767;
+  border-radius: 0.4rem;
+  font-weight: 500;
+  padding: 1rem 0.3rem;
+  margin: 3rem auto;
+}
+
+.title {
+  width: fit-content;
+  margin: auto;
+}
+
+.tutorial-colors-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0.3rem;
+}
+
+.tutorial-color {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

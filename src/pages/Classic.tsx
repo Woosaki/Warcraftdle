@@ -2,6 +2,9 @@ import "../assets/styles/Classic.css";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import correctCell from "../assets/images/CellBackgroundCorrect.webp";
+import partialCell from "../assets/images/CellBackgroundPartial.webp";
+import incorrectCell from "../assets/images/CellBackgroundBad.webp";
 
 type Character = {
   id: number;
@@ -153,34 +156,59 @@ const Classic = () => {
           )}
         </div>
         {selectedCharacters.length > 0 && (
-          <section className="classic-answers">
-            <div className="property-names">
-              <div className="property-name text-shadow">
-                Name <hr />
+          <>
+            <section className="classic-answers">
+              <div className="property-names">
+                <div className="property-name text-shadow">
+                  Name <hr />
+                </div>
+                <div className="property-name text-shadow">
+                  Gender <hr />
+                </div>
+                <div className="property-name text-shadow">
+                  Race <hr />
+                </div>
+                <div className="property-name text-shadow">
+                  Class <hr />
+                </div>
+                <div className="property-name text-shadow">
+                  Expansion(s) <hr />
+                </div>
+                <div className="property-name text-shadow">
+                  Affiliation(s) <hr />
+                </div>
+                <div className="property-name text-shadow">
+                  Zone(s) <hr />
+                </div>
               </div>
-              <div className="property-name text-shadow">
-                Gender <hr />
-              </div>
-              <div className="property-name text-shadow">
-                Race <hr />
-              </div>
-              <div className="property-name text-shadow">
-                Class <hr />
-              </div>
-              <div className="property-name text-shadow">
-                Expansion(s) <hr />
-              </div>
-              <div className="property-name text-shadow">
-                Affiliation(s) <hr />
-              </div>
-              <div className="property-name text-shadow">
-                Zone(s) <hr />
+              {selectedCharacters.map((character, index) =>
+                renderCharacterProperties(character, index)
+              )}
+            </section>
+            <div className="tutorial-colors">
+              <div className="title">Color indicators</div>
+              <div className="tutorial-colors-container">
+                <div className="tutorial-color">
+                  <div>
+                    <img src={correctCell} alt="Correct" width="30px" />
+                  </div>
+                  <div>Correct</div>
+                </div>
+                <div className="tutorial-color">
+                  <div>
+                    <img src={partialCell} alt="Partial" width="30px" />
+                  </div>
+                  <div>Partial</div>
+                </div>
+                <div className="tutorial-color">
+                  <div>
+                    <img src={incorrectCell} alt="Incorrect" width="30px" />
+                  </div>
+                  <div>Incorrect</div>
+                </div>
               </div>
             </div>
-            {selectedCharacters.map((character, index) =>
-              renderCharacterProperties(character, index)
-            )}
-          </section>
+          </>
         )}
       </main>
       <Footer />
