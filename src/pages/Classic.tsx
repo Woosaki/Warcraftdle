@@ -57,23 +57,48 @@ const Classic = () => {
 
     return (
       <div key={index} className="character-properties">
-        {characterProperties.map(([key, value]) => (
-          <div key={key} className="property">
-            {Array.isArray(value) ? (
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: value
-                    .map((v, i) => (i < value.length - 1 ? v + ",<br />" : v))
-                    .join(""),
-                }}
-              />
-            ) : value === null ? (
-              "Null"
-            ) : (
-              value
-            )}
-          </div>
-        ))}
+        {characterProperties.map(([key, value]) => {
+          let propertyClass = "non-matching-property";
+          if (characterToGuess) {
+            if (Array.isArray(value)) {
+              const guessValue = characterToGuess[key as keyof Character] as
+                | string[]
+                | null;
+              const allMatch =
+                value.length === guessValue?.length &&
+                value.every((v, i) => guessValue?.[i] === v);
+              const someMatch = value.some((v) => guessValue?.includes(v));
+              if (allMatch) {
+                propertyClass = "matching-property";
+              } else if (someMatch) {
+                propertyClass = "partially-matching-property";
+              }
+            } else {
+              propertyClass =
+                characterToGuess[key as keyof Character] === value
+                  ? "matching-property"
+                  : "non-matching-property";
+            }
+          }
+
+          return (
+            <div key={key} className={`property ${propertyClass}`}>
+              {Array.isArray(value) ? (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: value
+                      .map((v, i) => (i < value.length - 1 ? v + ",<br />" : v))
+                      .join(""),
+                  }}
+                />
+              ) : value === null ? (
+                "Null"
+              ) : (
+                value
+              )}
+            </div>
+          );
+        })}
       </div>
     );
   };
@@ -98,6 +123,7 @@ const Classic = () => {
                 unselectedCharacters[0],
                 ...selectedCharacters,
               ]);
+              console.log(characterToGuess);
             }}
             className="submit-button"
           >
