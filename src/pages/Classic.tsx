@@ -40,6 +40,14 @@ const Classic = () => {
     }
   }, [input, selectedCharacters]);
 
+  const handleOnClick = (characterToAdd?: Character) => {
+    setInput("");
+    setSelectedCharacters([
+      characterToAdd || unselectedCharacters[0],
+      ...selectedCharacters,
+    ]);
+  };
+
   const renderCharacterProperties = (character: Character, index: number) => {
     const excludedProperties = ["id", "photo"];
     const characterProperties = Object.entries(character).filter(
@@ -108,25 +116,18 @@ const Classic = () => {
             placeholder="Type character name ..."
           />
           <button
-            onClick={() => {
-              setInput("");
-              setSelectedCharacters([
-                unselectedCharacters[0],
-                ...selectedCharacters,
-              ]);
-            }}
+            onClick={() => handleOnClick(undefined)}
             className="submit-button"
             disabled={!input || !unselectedCharacters.length}
           >
             Submit
           </button>
-          <CharacterList
-            input={input}
-            setInput={setInput}
-            unselectedCharacters={unselectedCharacters}
-            selectedCharacters={selectedCharacters}
-            setSelectedCharacters={setSelectedCharacters}
-          />
+          {input && (
+            <CharacterList
+              handleOnClick={handleOnClick}
+              unselectedCharacters={unselectedCharacters}
+            />
+          )}
         </div>
         {selectedCharacters.length > 0 && (
           <>
