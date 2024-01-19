@@ -123,9 +123,9 @@ const Classic = () => {
                 unselectedCharacters[0],
                 ...selectedCharacters,
               ]);
-              console.log(characterToGuess);
             }}
             className="submit-button"
+            disabled={!input || !unselectedCharacters.length}
           >
             Submit
           </button>
@@ -152,34 +152,36 @@ const Classic = () => {
             </div>
           )}
         </div>
-        <section className="classic-answers">
-          <div className="property-names">
-            <div className="property-name text-shadow">
-              Name <hr />
+        {selectedCharacters.length > 0 && (
+          <section className="classic-answers">
+            <div className="property-names">
+              <div className="property-name text-shadow">
+                Name <hr />
+              </div>
+              <div className="property-name text-shadow">
+                Gender <hr />
+              </div>
+              <div className="property-name text-shadow">
+                Race <hr />
+              </div>
+              <div className="property-name text-shadow">
+                Class <hr />
+              </div>
+              <div className="property-name text-shadow">
+                Expansion(s) <hr />
+              </div>
+              <div className="property-name text-shadow">
+                Affiliation(s) <hr />
+              </div>
+              <div className="property-name text-shadow">
+                Zone(s) <hr />
+              </div>
             </div>
-            <div className="property-name text-shadow">
-              Gender <hr />
-            </div>
-            <div className="property-name text-shadow">
-              Race <hr />
-            </div>
-            <div className="property-name text-shadow">
-              Class <hr />
-            </div>
-            <div className="property-name text-shadow">
-              Expansion(s) <hr />
-            </div>
-            <div className="property-name text-shadow">
-              Affiliation(s) <hr />
-            </div>
-            <div className="property-name text-shadow">
-              Zone(s) <hr />
-            </div>
-          </div>
-          {selectedCharacters.map((character, index) =>
-            renderCharacterProperties(character, index)
-          )}
-        </section>
+            {selectedCharacters.map((character, index) =>
+              renderCharacterProperties(character, index)
+            )}
+          </section>
+        )}
       </main>
       <Footer />
     </>

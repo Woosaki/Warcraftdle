@@ -12,7 +12,7 @@ const Home = () => (
         <Link to="/classic" className="text-shadow">
           Classic 💪
         </Link>
-        <Link to="/quote" className="text-shadow">
+        <Link to="/" className="text-shadow">
           Quote 💬
         </Link>
         <Link to="/" className="text-shadow">
