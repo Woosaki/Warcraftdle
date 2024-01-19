@@ -2,11 +2,9 @@ import "../assets/styles/Classic.css";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Tutorial from "../components/Tutorial";
-import { Character } from "../types/Character";
 import InputField from "../components/InputField";
-import CharacterProperties from "../components/CharacterProperties";
-import PropertyNames from "../components/PropertyNames";
+import ClassicGameField from "../components/ClassicGameField";
+import { Character } from "../types/Character";
 
 const Classic = () => {
   const [input, setInput] = useState("");
@@ -61,22 +59,10 @@ const Classic = () => {
           handleOnClick={handleOnClick}
           unselectedCharacters={unselectedCharacters}
         />
-        {selectedCharacters.length > 0 && (
-          <>
-            <section className="classic-answers">
-              <PropertyNames />
-              {selectedCharacters.map((character, index) => (
-                <CharacterProperties
-                  key={character.id}
-                  character={character}
-                  index={index}
-                  characterToGuess={characterToGuess}
-                />
-              ))}
-            </section>
-            <Tutorial />
-          </>
-        )}
+        <ClassicGameField
+          selectedCharacters={selectedCharacters}
+          characterToGuess={characterToGuess}
+        />
       </main>
       <Footer />
     </>
