@@ -98,18 +98,22 @@
 
 .character-properties {
   display: flex;
-  background-color: #424242;
   align-items: center;
+  margin: 0.15rem;
+  border-radius: 0.3rem;
 }
 
 .property {
   flex: 1;
   color: #f9f6ee;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin: 0 0.15rem;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   position: relative;
 }
 
@@ -117,4 +121,16 @@
   content: "";
   display: block;
   padding-top: 80%;
+}
+
+.matching-property {
+  background-image: url("../images/CellBackgroundCorrect.webp");
+}
+
+.partially-matching-property {
+  background-image: url("../images/CellBackgroundPartial.webp");
+}
+
+.non-matching-property {
+  background-image: url("../images/CellBackgroundBad.webp");
 }
