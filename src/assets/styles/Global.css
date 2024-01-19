@@ -6,6 +6,14 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: center top;
+}
+
+img:focus,
+input:focus {
+  outline: none;
+}
+
+.text-shadow {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000;
 }
@@ -18,7 +26,7 @@ body {
 
 p {
   font-size: 1.5rem;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
   color: #fdfdfd;
   text-align: center;
 }

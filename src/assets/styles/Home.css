@@ -1,14 +1,14 @@
-main {
+.choose-gamemode {
   flex: 1;
 }
 
-.game-modes {
+.gamemodes {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.game-modes a {
+.gamemodes a {
   font-size: 2rem;
   margin: 10px;
   padding: 15px;
@@ -22,6 +22,6 @@ main {
   transition: transform 0.2s ease-in-out;
 }
 
-.game-modes a:hover {
+.gamemodes a:hover {
   transform: scale(1.05);
 }

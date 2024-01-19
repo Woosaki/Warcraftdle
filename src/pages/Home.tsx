@@ -6,12 +6,18 @@ import Footer from "../components/Footer";
 const Home = () => (
   <>
     <Header />
-    <main>
-      <p>Select a gamemode to get started</p>
-      <section className="game-modes">
-        <Link to="/classic">Classic 💪</Link>
-        <Link to="/quote">Quote 💬</Link>
-        <Link to="/">More soon 🏗️</Link>
+    <main className="choose-gamemode">
+      <p className="text-shadow">Select a gamemode to get started</p>
+      <section className="gamemodes">
+        <Link to="/classic" className="text-shadow">
+          Classic 💪
+        </Link>
+        <Link to="/quote" className="text-shadow">
+          Quote 💬
+        </Link>
+        <Link to="/" className="text-shadow">
+          More soon 🏗️
+        </Link>
       </section>
     </main>
     <Footer />
