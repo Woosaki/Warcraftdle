@@ -2,9 +2,7 @@ import "../assets/styles/Classic.css";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import correctCell from "../assets/images/CellBackgroundCorrect.webp";
-import partialCell from "../assets/images/CellBackgroundPartial.webp";
-import incorrectCell from "../assets/images/CellBackgroundBad.webp";
+import Tutorial from "../components/Tutorial";
 
 type Character = {
   id: number;
@@ -185,29 +183,7 @@ const Classic = () => {
                 renderCharacterProperties(character, index)
               )}
             </section>
-            <div className="tutorial-colors">
-              <div className="title">Color indicators</div>
-              <div className="tutorial-colors-container">
-                <div className="tutorial-color">
-                  <div>
-                    <img src={correctCell} alt="Correct" width="30px" />
-                  </div>
-                  <div>Correct</div>
-                </div>
-                <div className="tutorial-color">
-                  <div>
-                    <img src={partialCell} alt="Partial" width="30px" />
-                  </div>
-                  <div>Partial</div>
-                </div>
-                <div className="tutorial-color">
-                  <div>
-                    <img src={incorrectCell} alt="Incorrect" width="30px" />
-                  </div>
-                  <div>Incorrect</div>
-                </div>
-              </div>
-            </div>
+            <Tutorial />
           </>
         )}
       </main>
