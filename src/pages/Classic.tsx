@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import InputField from "../components/InputField";
 import ClassicGameField from "../components/ClassicGameField";
 import { Character } from "../types/Character";
+import WinMessage from "../components/WinMessage";
 
 const Classic = () => {
   const [input, setInput] = useState("");
@@ -15,6 +16,7 @@ const Classic = () => {
   );
   const [selectedCharacters, setSelectedCharacters] = useState<Character[]>([]);
   const [characterToGuess, setCharacterToGuess] = useState<Character>();
+  const [hasWon, setHasWon] = useState(false);
 
   useEffect(() => {
     const fetchRandomCharacterData = async () => {
@@ -49,24 +51,38 @@ const Classic = () => {
 
   const handleOnClick = (characterToAdd?: Character) => {
     setInput("");
-    setSelectedCharacters([
+    const newSelectedCharacters = [
       characterToAdd || unselectedCharacters[0],
       ...selectedCharacters,
-    ]);
+    ];
+    setSelectedCharacters(newSelectedCharacters);
+
+    if (
+      characterToGuess &&
+      newSelectedCharacters[0].name === characterToGuess.name
+    ) {
+      setHasWon(true);
+    }
   };
 
   return (
     <>
       <Header />
       <main className="classic-game">
-        <p className="text-shadow">Guess World of Warcraft character!</p>
-        <InputField
-          input={input}
-          isLoading={isLoading}
-          setInput={setInput}
-          handleOnClick={handleOnClick}
-          unselectedCharacters={unselectedCharacters}
-        />
+        {hasWon ? (
+          <WinMessage />
+        ) : (
+          <>
+            <p className="text-shadow">Guess World of Warcraft character!</p>
+            <InputField
+              input={input}
+              isLoading={isLoading}
+              setInput={setInput}
+              handleOnClick={handleOnClick}
+              unselectedCharacters={unselectedCharacters}
+            />
+          </>
+        )}
         <ClassicGameField
           selectedCharacters={selectedCharacters}
           characterToGuess={characterToGuess}

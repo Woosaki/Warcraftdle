@@ -4,6 +4,38 @@
   align-items: center;
 }
 
+.win-message {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem;
+  background-color: #181c20;
+  border: 2px solid #af9767;
+  border-radius: 0.5rem;
+}
+
+.win-message h1 {
+  color: #4caf50;
+}
+
+.win-message button {
+  background-color: #424242;
+  border: 2px solid #af9767;
+  color: #f9f6ee;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 2rem;
+  margin: 2rem 0 1rem 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.3s;
+}
+
+.win-message button:hover {
+  background-color: #76726f;
+}
+
 .input-container {
   display: flex;
   min-width: 400px;
