@@ -1,21 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface ColoredImageProps {
-  href: string;
+  to: string;
   src: string;
   alt: string;
   backgroundColor: string;
 }
 
 const ColoredImage: React.FC<ColoredImageProps> = ({
-  href,
+  to,
   src,
   alt,
   backgroundColor,
 }) => (
-  <a href={href}>
+  <Link to={to}>
     <img src={src} alt={alt} style={{ backgroundColor: backgroundColor }} />
-  </a>
+  </Link>
 );
 
 export default ColoredImage;

@@ -9,19 +9,19 @@ const Footer = () => (
   <footer>
     <div className="useful-links">
       <ColoredImage
-        href="https://github.com/Woosaki/Warcraftdle"
+        to="https://github.com/Woosaki/Warcraftdle"
         src={githubSVG}
         alt="Github Image"
         backgroundColor="#000"
       />
       <ColoredImage
-        href="https://ko-fi.com/woosaki"
+        to="https://ko-fi.com/woosaki"
         src={coffeeSVG}
         alt="Coffee Image"
         backgroundColor="#ace4aa"
       />
       <ColoredImage
-        href="https://www.wp.pl/"
+        to="/about"
         src={infoSVG}
         alt="Info Image"
         backgroundColor="#fcc41c"
