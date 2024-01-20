@@ -57,13 +57,48 @@ const CharacterProperty: React.FC<CharacterPropertyProps> = ({
     return value;
   };
 
+  const calculateFontSize = (value: string) => {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth >= 1200) {
+      if (value.length > 25) {
+        return "calc(0.5vw + 0.2rem)";
+      }
+      if (value.length > 10) {
+        return "calc(0.5vw + 0.4rem)";
+      }
+      return "calc(0.4vw + 0.4rem)";
+    }
+
+    if (screenWidth > 600 && screenWidth < 1200) {
+      if (value.length > 25) {
+        return "calc(0.35vw + 0.2rem)";
+      }
+      if (value.length > 10) {
+        return "calc(0.5vw + 0.4rem)";
+      }
+      return "calc(0.4vw + 0.6rem)";
+    }
+
+    if (screenWidth <= 600) {
+      if (value.length > 25) {
+        return "calc(0.5vw + 0.3rem)";
+      }
+      if (value.length > 10) {
+        return "calc(0.6vw + 0.4rem)";
+      }
+      return "calc(0.4vw + 0.7rem)";
+    }
+  };
+
   const propertyClass = getPropertyClass(keyName, value);
   const formattedValue = formatValue(value) as string;
+  const fontSize = calculateFontSize(formattedValue);
 
   return (
     <div className={`property ${propertyClass}`}>
       <div
-        style={{ padding: "0.3rem" }}
+        style={{ padding: "0.1rem", fontSize: `${fontSize}` }}
         dangerouslySetInnerHTML={{ __html: formattedValue }}
       />
     </div>
