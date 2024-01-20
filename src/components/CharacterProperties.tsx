@@ -1,5 +1,6 @@
 import React from "react";
 import { Character } from "../types/Character";
+import CharacterProperty from "./CharacterProperty";
 
 interface CharacterPropertiesProps {
   character: Character;
@@ -18,48 +19,14 @@ const CharacterProperties: React.FC<CharacterPropertiesProps> = ({
 
   return (
     <div className="character-properties">
-      {characterProperties.map(([key, value], index) => {
-        let propertyClass = "non-matching-property";
-        if (characterToGuess) {
-          if (Array.isArray(value)) {
-            const guessValue = characterToGuess[key as keyof Character] as
-              | string[]
-              | null;
-            const allMatch =
-              value.length === guessValue?.length &&
-              value.every((v, i) => guessValue?.[i] === v);
-            const someMatch = value.some((v) => guessValue?.includes(v));
-            if (allMatch) {
-              propertyClass = "matching-property";
-            } else if (someMatch) {
-              propertyClass = "partially-matching-property";
-            }
-          } else {
-            propertyClass =
-              characterToGuess[key as keyof Character] === value
-                ? "matching-property"
-                : "non-matching-property";
-          }
-        }
-
-        return (
-          <div key={`${key}-${index}`} className={`property ${propertyClass}`}>
-            {Array.isArray(value) ? (
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: value
-                    .map((v, i) => (i < value.length - 1 ? v + ",<br />" : v))
-                    .join(""),
-                }}
-              />
-            ) : value === null ? (
-              "Null"
-            ) : (
-              value
-            )}
-          </div>
-        );
-      })}
+      {characterProperties.map(([key, value], index) => (
+        <CharacterProperty
+          key={`${key}-${index}`}
+          keyName={key}
+          value={value}
+          characterToGuess={characterToGuess}
+        />
+      ))}
     </div>
   );
 };
