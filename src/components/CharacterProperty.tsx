@@ -60,12 +60,10 @@ const CharacterProperty: React.FC<CharacterPropertyProps> = ({
   const propertyClass = getPropertyClass(keyName, value);
   const formattedValue = formatValue(value) as string;
 
-  const fontSize = Math.min(16, 700 / formattedValue.length);
-
   return (
     <div className={`property ${propertyClass}`}>
       <div
-        style={{ padding: "0.3rem", fontSize: `${fontSize}px` }}
+        style={{ padding: "0.3rem" }}
         dangerouslySetInnerHTML={{ __html: formattedValue }}
       />
     </div>
