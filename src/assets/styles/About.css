@@ -1,0 +1,33 @@
+.about-container {
+  width: clamp(400px, 50%, 800px);
+  background-color: #181c20;
+  border: 2px solid #af9767;
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  margin: 2rem auto 3rem auto;
+}
+
+.about-title {
+  margin: auto;
+  width: fit-content;
+  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  color: #af9767;
+}
+
+.title-line {
+  border: 0;
+  width: inherit;
+  height: 2px;
+  background: #af9767;
+  margin-bottom: 3rem;
+}
+
+.about-p {
+  font-size: 1.2rem;
+  text-align: left;
+  line-height: 1.6;
+  color: #f9f6ee;
+  margin: 1.5rem;
+  margin-bottom: 2rem;
+}

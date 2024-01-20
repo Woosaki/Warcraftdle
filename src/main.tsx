@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Classic from "./pages/Classic";
+import About from "./pages/About";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/classic",
     element: <Classic />,
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
 ]);
 
