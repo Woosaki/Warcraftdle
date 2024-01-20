@@ -70,7 +70,7 @@ const Classic = () => {
       <Header />
       <main className="classic-game">
         {hasWon ? (
-          <WinMessage />
+          <WinMessage characterName={characterToGuess!.name} />
         ) : (
           <>
             <p className="text-shadow">Guess World of Warcraft character!</p>
