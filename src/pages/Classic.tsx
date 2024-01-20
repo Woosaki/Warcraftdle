@@ -9,6 +9,7 @@ import { Character } from "../types/Character";
 
 const Classic = () => {
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [unselectedCharacters, setUnselectedCharacters] = useState<Character[]>(
     []
   );
@@ -24,10 +25,13 @@ const Classic = () => {
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
     const controller = new AbortController();
+
     const fetchCharactersStartingWithInput = async () => {
       const characters = await fetchCharactersStartingWith(
         input,
+        setIsLoading,
         selectedCharacters,
         controller.signal
       );
@@ -58,6 +62,7 @@ const Classic = () => {
         <p className="text-shadow">Guess World of Warcraft character!</p>
         <InputField
           input={input}
+          isLoading={isLoading}
           setInput={setInput}
           handleOnClick={handleOnClick}
           unselectedCharacters={unselectedCharacters}

@@ -10,6 +10,7 @@ export const fetchRandomCharacter = async (): Promise<Character> => {
 
 export const fetchCharactersStartingWith = async (
   input: string,
+  setIsLoading: (isLoading: boolean) => void,
   selectedCharacters: Character[],
   signal: AbortSignal
 ): Promise<Character[]> => {
@@ -21,5 +22,7 @@ export const fetchCharactersStartingWith = async (
     (character) =>
       !selectedCharacters.find((selected) => selected.id === character.id)
   );
+  setIsLoading(false);
+
   return unselected;
 };

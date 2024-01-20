@@ -3,6 +3,7 @@ import CharacterList from "./CharacterList";
 
 interface InputFieldProps {
   input: string;
+  isLoading: boolean;
   setInput: (input: string) => void;
   handleOnClick: (characterToAdd?: Character) => void;
   unselectedCharacters: Character[];
@@ -10,6 +11,7 @@ interface InputFieldProps {
 
 const InputField: React.FC<InputFieldProps> = ({
   input,
+  isLoading,
   setInput,
   handleOnClick,
   unselectedCharacters,
@@ -29,12 +31,14 @@ const InputField: React.FC<InputFieldProps> = ({
     >
       Submit
     </button>
-    {input && (
-      <CharacterList
-        handleOnClick={handleOnClick}
-        unselectedCharacters={unselectedCharacters}
-      />
-    )}
+    {isLoading
+      ? null
+      : input && (
+          <CharacterList
+            handleOnClick={handleOnClick}
+            unselectedCharacters={unselectedCharacters}
+          />
+        )}
   </div>
 );
 
