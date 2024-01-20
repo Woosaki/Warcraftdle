@@ -31,13 +31,19 @@ const Classic = () => {
     const controller = new AbortController();
 
     const fetchCharactersStartingWithInput = async () => {
-      const characters = await fetchCharactersStartingWith(
-        input,
-        setIsLoading,
-        selectedCharacters,
-        controller.signal
-      );
-      setUnselectedCharacters(characters);
+      try {
+        const characters = await fetchCharactersStartingWith(
+          input,
+          setIsLoading,
+          selectedCharacters,
+          controller.signal
+        );
+        setUnselectedCharacters(characters);
+      } catch (error) {
+        if ((error as Error).name !== "AbortError") {
+          throw error;
+        }
+      }
     };
 
     if (input) {
